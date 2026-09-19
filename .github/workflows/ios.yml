@@ -1,0 +1,13 @@
+name: iOS Build
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate project
+        run: xcodegen generate
+      - name: Build simulator
+        run: xcodebuild -project JARVISIOS.xcodeproj -scheme JARVISIOS -sdk iphonesimulator -configuration Debug CODE_SIGNING_ALLOWED=NO build

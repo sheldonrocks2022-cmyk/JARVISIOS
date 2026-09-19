@@ -1,0 +1,16 @@
+name: JARVISIOS
+options:
+  bundleIdPrefix: com.esn
+  deploymentTarget: { iOS: "17.0" }
+targets:
+  JARVISIOS:
+    type: application
+    platform: iOS
+    sources: [JARVISIOS]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.esn.jarvisios
+        SWIFT_VERSION: 5.9
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: JARVIS uses the microphone for voice commands.
+        INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: JARVIS uses speech recognition to understand commands.
