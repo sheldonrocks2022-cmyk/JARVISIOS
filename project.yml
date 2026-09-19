@@ -12,5 +12,10 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.esn.jarvisios
         SWIFT_VERSION: 5.9
         GENERATE_INFOPLIST_FILE: YES
+        FRAMEWORK_SEARCH_PATHS: "$(inherited) $(PROJECT_DIR)/Frameworks"
+        OTHER_LDFLAGS: "$(inherited) -lc++ -framework Accelerate -framework Metal"
         INFOPLIST_KEY_NSMicrophoneUsageDescription: JARVIS uses the microphone for voice commands.
         INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: JARVIS uses speech recognition to understand commands.
+    dependencies:
+      - framework: Frameworks/llama.xcframework
+        embed: false
