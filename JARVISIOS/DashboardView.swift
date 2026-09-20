@@ -6,7 +6,7 @@ struct DashboardView:View{
  @StateObject private var bluetooth=JarvisBluetoothManager()
  @State private var command="";@State private var importer=false
  var body:some View{NavigationStack{ScrollView{VStack(spacing:18){
-  Text("J.A.R.V.I.S.").font(.largeTitle.bold());Text(jarvis.status).font(.caption).multilineTextAlignment(.center)
+  Text("J.A.R.V.I.S.").font(.largeTitle.bold());Text(jarvis.isThinking ? "PROCESSING" : (jarvis.voice.listening ? "LISTENING" : "ONLINE")).font(.caption.bold());Text(jarvis.status).font(.caption).multilineTextAlignment(.center);if !jarvis.transcript.isEmpty{Text("Heard: \\(jarvis.transcript)").font(.caption).multilineTextAlignment(.center)}
   TextField("Command",text:$command).textFieldStyle(.roundedBorder)
   HStack{Button("RUN"){jarvis.handle(command);command=""}.buttonStyle(.borderedProminent);Button(jarvis.voice.listening ? "STOP":"VOICE"){jarvis.toggleVoice()}.buttonStyle(.bordered)}
   GroupBox("LOCAL AI"){VStack{Text(models.status);Button("IMPORT GGUF"){importer=true};Button("DELETE MODEL",role:.destructive){models.delete()}}}
